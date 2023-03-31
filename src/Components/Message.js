@@ -1,23 +1,34 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 
-const Messages = ({ messages, currentMember }) => {
+export default function Message({ messages, currentMember }) {
+  const scrolling = useRef(null);
+
+  useEffect(() => {
+    scrolling.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   // console.log(messages);
   // console.log(currentMember);
+
   const renderMessage = (message, currentMember, id) => {
     const { member, textMessage } = message;
     const myMessage = member.id === currentMember.id;
-    const className = myMessage
-      ? "messages-message mainUser"
-      : "messages-message";
+    const allMessages = myMessage ? "messMessages mainUser" : "messMessages";
     return (
-      <li key={id} className={className}>
+      <li key={id} className={allMessages}>
         <span
-          className="dot"
+          className="avatar"
           style={{ backgroundColor: member.clientData.color }}
         />
         <div className="content">
           <div className="username">{member.clientData.username}</div>
-          <div className="text">{textMessage}</div>
+          <div
+            className="text"
+            style={{ backgroundColor: member.clientData.color }}
+          >
+            {textMessage}
+          </div>
         </div>
       </li>
     );
@@ -25,7 +36,7 @@ const Messages = ({ messages, currentMember }) => {
   return (
     <ul className="messagesList">
       {messages.map((m, i) => renderMessage(m, currentMember, i))}
+      <div ref={scrolling} />
     </ul>
   );
-};
-export default Messages;
+}

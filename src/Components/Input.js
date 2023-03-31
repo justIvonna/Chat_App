@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 
-const Input = (props) => {
+export default function Input({ onSendMessage }) {
   const [text, setText] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(text);
-    props.onSendMessage(text);
-    setText("");
+
+    if (text.trim() === "") {
+      setError("Ne možeš poslati praznu poruku!");
+    } else {
+      setError("");
+      onSendMessage(text);
+      setText("");
+    }
   };
   return (
     <div className="input">
       <form className="formInput" onSubmit={handleSubmit}>
+        <h2>{error}</h2>
         <input
           className="inputText"
           onChange={(e) => setText(e.target.value)}
           value={text}
           type="text"
           placeholder="Upiši poruku..."
-          autoFocus={false} //pr
+          autoFocus={true}
         />
+
         <button type="submit" className="btn">
           Pošalji
         </button>
       </form>
     </div>
   );
-};
-export default Input;
+}

@@ -1,10 +1,9 @@
 import React from "react";
 
-const Header = () => {
+export default function Header() {
   return (
     <div className="chatHeader">
-      <h1>Chat APP</h1>
+      <h1>&#128172; Chat APP</h1>
     </div>
   );
-};
-export default Header;
+}

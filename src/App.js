@@ -3,43 +3,21 @@ import React, { useEffect, useState } from "react";
 import Message from "./Components/Message";
 import Header from "./Components/Header";
 import Input from "./Components/Input";
+import Footer from "./Components/Footer";
+import { randomColor, randomName } from "./Functions/Names";
 
-const randomName = () => {
-  const names = [
-    "Ante Anić",
-    "Anica Anković",
-    "Teddy Bear",
-    "Mickey Mouse",
-    "Minnie Mouse",
-    "Mara Marić",
-    "Ivo Ivić",
-    "Milka Milena",
-    "Graško Grašak",
-    "Bubić Pablo",
-    "Kvrga Kvrg",
-    "mačak Zoko",
-    "maca Molly",
-    "Garava",
-    "Mik Mikonja",
-    "Slavko Slavić",
-  ];
-  const namesRandom = names[Math.floor(Math.random() * names.length)];
-  return namesRandom;
-};
-const randomColor = () => {
-  return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
-};
 const App = () => {
-  // eslint-disable-next-line
   const [member, setMember] = useState({
     username: randomName(),
     color: randomColor(),
   });
+
   const [drone, setDrone] = useState(null);
   const [messages, setMessages] = useState([]);
+
   useEffect(() => {
     if (!drone) {
-      const drone = new window.Scaledrone("yJ7dWBpcyutbBfPj", {
+      const drone = new window.Scaledrone("mcrxToNY4tweJp7B", {
         data: member,
       });
       drone.on("open", (error) => {
@@ -47,6 +25,7 @@ const App = () => {
           return console.error(error);
         }
         member.id = drone.clientId;
+        setMember(member);
       });
       setDrone(drone);
     } else {
@@ -57,17 +36,20 @@ const App = () => {
       });
     }
   }, [drone, member]);
+
   const onSendMessage = (message) => {
     drone.publish({
       room: "observable-room",
       message,
     });
   };
+
   return (
     <div className="chatContainer">
       <Header />
       <Message messages={messages} currentMember={member} />
       <Input onSendMessage={onSendMessage} />
+      <Footer />
     </div>
   );
 };

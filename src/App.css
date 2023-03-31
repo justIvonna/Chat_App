@@ -6,7 +6,6 @@
 }
 
 body {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,6 +33,7 @@ body {
   height: 40px;
   text-align: center;
   color: rgb(0, 0, 0);
+
 }
 
 .messagesList {
@@ -45,17 +45,17 @@ body {
   padding-left: 0;
   flex-grow: 1;
   overflow: auto;
-  /* scroll-behavior: smooth; */
+
 }
 
-.messages-message {
+.messMessages {
   display: flex;
   margin-top: 10px;
 }
 
-.messages-message.mainUser {
-  /*justify-content: flex-end;*/
+.messMessages.mainUser {
   flex-direction: row-reverse;
+  justify-content: flex-start;
   text-align: right;
 }
 
@@ -63,46 +63,48 @@ body {
   display: inline-block;
 }
 
-.content>.username {
+.content .username {
   display: block;
   color: rgb(70, 70, 70);
-  font-size: 15px;
-  padding-bottom: 4px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 2px;
+  margin-bottom: 5px;
 }
 
-.content>.text {
+.content .text {
+  display: inline-block;
   padding: 10px;
   max-width: 400px;
-  margin: 0;
   border-radius: 12px;
-  background-color: #f3abb6;
+  font-weight: 600;
   color: white;
-  display: inline-block;
 }
 
-.mainUser>.content .text {
-  background-color: #fd8f52;
-
-}
-
-.currentMember>.content {
+.currentMember .content {
   align-items: flex-end;
 }
 
-.messages-message>.dot {
+.messMessages .avatar {
   display: inline-block;
   height: 15px;
   width: 15px;
   border-radius: 30%;
   margin: 20px 5px;
-  /* background-color: #a766cf; */
-
 }
 
 .input {
   display: flex;
   padding: 10px 5px;
   justify-content: space-between;
+}
+
+.formInput h2 {
+  color: red;
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .inputText {
@@ -112,11 +114,9 @@ body {
   border-radius: 8px;
   background-color: #eeebebbe;
   border: 2px solid #7f578f;
-  /* flex-grow: 1; */
 }
 
 .btn {
-  /* width: 90px; */
   padding: 7px;
   font-size: 22px;
   background-color: #7f578f;
@@ -125,10 +125,14 @@ body {
   border-radius: 15px;
   margin-left: 5px;
   cursor: pointer;
-
 }
 
 .btn:hover {
   box-shadow: #aa88e9 0 20px 8px;
   transform: translateY(-7px);
+}
+
+.footer {
+  color: #564575;
+  text-align: center;
 }
