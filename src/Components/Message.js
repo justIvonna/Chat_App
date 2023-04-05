@@ -15,6 +15,7 @@ export default function Message({ messages, currentMember }) {
     const { member, textMessage } = message;
     const myMessage = member.id === currentMember.id;
     const allMessages = myMessage ? "messMessages mainUser" : "messMessages";
+
     return (
       <li key={id} className={allMessages}>
         <span
@@ -33,6 +34,7 @@ export default function Message({ messages, currentMember }) {
       </li>
     );
   };
+
   return (
     <ul className="messagesList">
       {messages.map((m, i) => renderMessage(m, currentMember, i))}

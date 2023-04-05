@@ -26,6 +26,15 @@ const randomName = () => {
     "Zvonko",
     "Brum Brum",
     "Tom i Jerry",
+    "Cico Štos",
+    "Zekoslav Mrkva",
+    "Homer Simpson",
+    "Charlie Brown",
+    "Ptica trkačica",
+    "Scooby Doo",
+    "Pink Panter",
+    "Donald Duck",
+    "Dekster",
   ];
   const namesRandom = names[Math.floor(Math.random() * names.length)];
   return namesRandom;
