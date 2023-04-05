@@ -5,6 +5,28 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: none;
+  scrollbar-color: #8f54a0 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #a766cf;
+  border-radius: 9px;
+  border: 3px none #ffffff;
+}
+
 body {
   display: flex;
   justify-content: center;
