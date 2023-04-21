@@ -8,9 +8,6 @@ export default function Message({ messages, currentMember }) {
     scrolling.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // console.log(messages);
-  // console.log(currentMember);
-
   const renderMessage = (message, currentMember, id) => {
     const { member, textMessage } = message;
     const myMessage = member.id === currentMember.id;

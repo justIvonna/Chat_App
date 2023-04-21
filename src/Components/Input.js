@@ -6,7 +6,7 @@ export default function Input({ onSendMessage }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(text);
+    console.log(text);
 
     if (text.trim() === "") {
       setError("Ne možeš poslati praznu poruku!");
@@ -16,6 +16,7 @@ export default function Input({ onSendMessage }) {
       setText("");
     }
   };
+
   return (
     <div className="input">
       <form className="formInput" onSubmit={handleSubmit}>
@@ -28,7 +29,6 @@ export default function Input({ onSendMessage }) {
           placeholder="Upiši poruku..."
           autoFocus={true}
         />
-
         <button type="submit" className="btn">
           Pošalji
         </button>
