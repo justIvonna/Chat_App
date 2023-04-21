@@ -6,7 +6,6 @@ export default function Input({ onSendMessage }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(text);
 
     if (text.trim() === "") {
       setError("Ne možeš poslati praznu poruku!");
